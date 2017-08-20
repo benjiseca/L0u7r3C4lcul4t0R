@@ -1,8 +1,8 @@
 Bon, bha j'vais vous carry hein ..
 Btw : repartition des taches :
-Maris  == faire la fonction de calcul une fois le tableau en polonais;
+JackLeSegFaulteur  == faire la fonction de calcul une fois le tableau en polonais;
 Clement == split la string en tableau en fr;
-Kevin == algo monde -> polonais;
+Cocobo == algo monde -> polonais;
 Elliot == j'me balade et j'aide au besoin, meme si je srs pas souvet a grand chose :DDDDDDDD
 les autres, branlette x)
 regarder de la doc sur l'algo et commencer a reflechir sr la facon de le faire en c. ici l'algo en pseudo code 
