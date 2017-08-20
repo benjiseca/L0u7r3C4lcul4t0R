@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_header.h                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgaspa <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/20 21:59:48 by mgaspa            #+#    #+#             */
-/*   Updated: 2017/08/20 22:45:10 by mgaspa           ###   ########.fr       */
+/*   Created: 2017/08/20 21:58:35 by mgaspa            #+#    #+#             */
+/*   Updated: 2017/08/20 22:13:35 by mgaspa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_HEADER_H
-# define FT_HEADER_H
-# include <stdlib.h>
-# include <unistd.h>
+#include "ft_header.h"
 
-char	*suppr_spaces(char *str);
-float	ft_parse_nbr(char **ps);
-float	eval_expr_moins_de_ligne(char **ps);
-float	eval_expr_encore_moins(char **ps);
-int		eval_expr(char *str);
-float	ft_do_op(float nb1, float nb2, char op);
-void	ft_putchar(char c);
-int		ft_strlen(char *str);
-void	ft_putnbr(int nbr);
-#endif
+int	main(int ac, char **av)
+{
+	if (ac > 1)
+	{
+		ft_putnbr(eval_expr(av[1]));
+		ft_putchar('\n');
+	}
+	return (0);
+}
