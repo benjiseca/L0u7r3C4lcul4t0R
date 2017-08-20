@@ -6,7 +6,7 @@
 /*   By: cdutartr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/20 01:10:22 by cdutartr          #+#    #+#             */
-/*   Updated: 2017/08/20 01:42:42 by cdutartr         ###   ########.fr       */
+/*   Updated: 2017/08/20 02:22:13 by cdutartr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,13 @@ int		ft_count_benji(char *str)
 	{
 		while (*str && ft_is_operand(*str))
 		{
-			count++;
-			str++;
+			if (ft_is_operand(*(str - 1)) && *str != '(' && *str != ')')
+				str++;
+			else
+			{
+				count++;
+				str++;
+			}
 		}
 		if (*str)
 			count2++;
@@ -43,7 +48,15 @@ int		ft_word_length(char *str)
 
 	count = 0;
 	if (ft_is_operand(*str))
-		return (1);
+	{
+		if (ft_is_operand(*(str - 1)) && *str != '(' && *str != ')')
+		{
+			count++;
+			str++;
+		}
+		else
+			return (1);
+	}
 	while (*str && ft_isnot_operand(*str))
 	{
 		count++;
@@ -62,15 +75,19 @@ char	*ft_get_word(char *str, int length)
 	if (ft_is_operand(*str))
 	{
 		ptr[i] = *str;
-		ptr[i + 1] = '\0';
-		return (ptr);
+		if (ft_is_operand(*(str - 1)) && *str != '(' && *str != ')')
+		{
+			i++;
+			str++;
+		}
+		else 
+		{
+			ptr[i + 1] = '\0';
+			return (ptr);
+		}
 	}
 	while (*str && ft_isnot_operand(*str))
-	{
-		ptr[i] = *str;
-		str++;
-		i++;
-	}
+		ptr[i++] = *str++;
 	ptr[i] = '\0';
 	return (ptr);
 }
@@ -100,8 +117,12 @@ int main(int argc, char **argv)
 {
 	int i;
 	char **str;
+	char *ptr;
 
 	i = 0;
+	ptr = argv[1] + 2;
+	printf("%d\n", ft_word_length(ptr));
+	//printf("%d\n", ft_count_benji(argv[1]));
 	//printf("%s\n", ft_get_word(argv[1], 3));
 	str = ft_split_operand(argv[1]);
 	while(str[i])
