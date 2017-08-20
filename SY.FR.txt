@@ -1,0 +1,13 @@
+1.  Tant que il y a des choses a lire :
+2.        Lire un token
+3.        Si c’est un nombre on l’ajoute a la sortie
+4.        Si c’est un operant
+5.               Tant qu’il y a un opérateur sur la stack avec une plus grande priorité: 
+6.                       Met les opérateurs de la stock dans la sortie
+7.               Met l’operateur actuel sur la stack
+8.        Si c’est une parenthèse gauche, met le sur la stack
+9.        Si c’est une parenthèse droit 
+10.            Tant qu’il n’y a pas de membre de gauche au dessus de la stack:
+11.                     Met les opérateurs de la stack dans la sortie
+12.             Met les opérateur gauche de la stack dans la sortie
+13. Tant qu’il y a des opérateurs dans la stack, met les dans la sortie.
