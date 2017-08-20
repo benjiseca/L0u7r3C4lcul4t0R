@@ -6,7 +6,7 @@
 /*   By: mgaspa <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/19 18:32:50 by mgaspa            #+#    #+#             */
-/*   Updated: 2017/08/20 16:22:56 by mgaspa           ###   ########.fr       */
+/*   Updated: 2017/08/20 20:32:14 by ebertin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_tout_colle(char *str)
 
 	i = 0;
 	j = 0;
-	str2 = (char*)malloc(sizeof(char)* (ft_strlen(str) + 1));
+	str2 = (char*)malloc(sizeof(char) * (ft_strlen(str) + 1));
 	while (str[i] != '\0')
 	{
 		if (str[i] != ' ')

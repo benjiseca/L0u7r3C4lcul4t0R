@@ -6,30 +6,31 @@
 /*   By: mgaspa <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/19 21:49:04 by mgaspa            #+#    #+#             */
-/*   Updated: 2017/08/20 18:36:07 by mgaspa           ###   ########.fr       */
+/*   Updated: 2017/08/20 20:33:29 by ebertin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_header.h"
 
-float ft_calc_polonais(char **str)
+float	ft_calc_polonais(char **str)
 {
-	int	i;
-	int	j;
-	float first[150000];
-	int count;
+	int		i;
+	int		j;
+	float	first[150000];
+	int		count;
 
 	count = 0;
 	i = 0;
 	j = -1;
 	while (str[i][0] != '\0')
 	{
-		if (str[i][0] == '+' || str[i][0] == '-' || str[i][0] == '*' || str[i][0] == '/' || str[i][0] == '%')
+		if (str[i][0] == '+' || str[i][0] == '-' || str[i][0] == '*' ||
+				str[i][0] == '/' || str[i][0] == '%')
 		{
-			first[j - 1] =ft_operations(str[i][0], first[j - 1], first[j]);
+			first[j - 1] = ft_operations(str[i][0], first[j - 1], first[j]);
 			j--;
 		}
-		else 
+		else
 		{
 			j++;
 			first[j] = (float)ft_atoi(str[i]);
