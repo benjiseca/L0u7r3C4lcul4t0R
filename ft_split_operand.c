@@ -6,7 +6,7 @@
 /*   By: cdutartr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/20 01:10:22 by cdutartr          #+#    #+#             */
-/*   Updated: 2017/08/20 02:30:10 by cdutartr         ###   ########.fr       */
+/*   Updated: 2017/08/20 17:31:07 by cdutartr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,6 @@ char	*ft_get_word(char *str, int length)
 char	**ft_split_operand(char *str)
 {
 	int		i;
-	int		length;
 	int		time;
 	char	**tab;
 
