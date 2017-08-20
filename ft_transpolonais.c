@@ -6,64 +6,83 @@
 /*   By: kfavier <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/19 23:03:45 by kfavier           #+#    #+#             */
-/*   Updated: 2017/08/20 16:42:26 by kfavier          ###   ########.fr       */
+/*   Updated: 2017/08/20 18:41:39 by cdutartr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "ft_header.h"
 
-char **ft_transpolonais(char **c)
+char **ft_transpolonais(char **tab)
 {
 	int		i;
 	int		j;
 	int		k;
-	char	*sortie;
-	char	*stack;
+	char	**sortie;
+	char	**stack;
 
 	i = 0;
 	j = 0;
-	k = 1;
-	stack = (char*)malloc(10 * sizeof(char));
-	sortie = (char*)malloc(sizeof(c));
-	stack[0] = "#";
-	while (c[i] != '\0')
+	k = 0;
+	stack = (char**)malloc(sizeof(char*) * 100);
+	sortie = (char**)malloc(sizeof(char*) * 1000);
+	
+	while (tab[i])
 	{
-		if (ft_is_operand(c[i]))
+		if (tab[i] && ft_isnot_operand(tab[i][0]))
 		{
-			sortie[j] = c[i];
+			sortie[j] = tab[i];
+			i++;
 			j++;
-			i++;
 		}
-		if (c[i] == '(')
+		else if (tab[i] && ft_is_operand(tab[i][0]))
 		{
-			stack[k] = c[i];
-			i++;
-			k++;
-		printf("%s\n", stack[k]);
-		}
-		if (c[i] == '+' || c[i] == '-')
-		{
-			if (stack[i - 1] == '(')
+		 if (tab[i][0] == '+' || tab[i][0] == '-')
 			{
-				stack[k] = c[i];
+					sortie[j] = stack[k];
+					stack[k] = tab[i];
+					j++;
+					i++;
+			}
+		 else if (tab[i][0] == '*' || tab[i][0] == '/')
+		 {
+			if (stack[k][0] == '+' || stack[k][0] == '-')
+			{
 				k++;
+				stack[k] = tab[i];
 				i++;
-		printf("%s\n", stack[k]);
 			}
-			else
+			else if (stack[k][0] == '*' || stack[k][0] == '/' ||
+					stack[k][0] == '(')
 			{
-				sortie[j] = stack[k - 1];
-				stack[k - 1] = c[i];
-				i++;
+				sortie[j] = stack[k];
+				stack[k] = tab[i];
 				j++;
+				i++;
 			}
+		 }
+//		 else if (tab[i][0] == '(')
+//		 {
+//			 
+//		 }
 		}
 	}
+	sortie[j] = 0;
+	i = 0;
+	while (sortie[i])
+	{
+		printf("%s\n", sortie[i]);
+		i++;
+	}
+	return (sortie);
 }
 
 int main(int args, char **argv)
 {
-	printf("%s", ft_split_operand(argv[1])[1]);
-	ft_transpolonais(ft_split_operand(argv[1]));
+	int i;
+	char **tab;
+
+	i = 0;
+	tab = ft_split_operand(argv[1]);
+	ft_transpolonais(tab);
 }
