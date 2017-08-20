@@ -1,35 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tout_colle.c                                   :+:      :+:    :+:   */
+/*   ft_cb_polonais.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgaspa <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/19 18:32:50 by mgaspa            #+#    #+#             */
-/*   Updated: 2017/08/20 16:22:56 by mgaspa           ###   ########.fr       */
+/*   Created: 2017/08/19 21:49:04 by mgaspa            #+#    #+#             */
+/*   Updated: 2017/08/20 18:36:07 by mgaspa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_header.h"
 
-char	*ft_tout_colle(char *str)
+float ft_calc_polonais(char **str)
 {
-	int		i;
-	int		j;
-	char	*str2;
+	int	i;
+	int	j;
+	float first[150000];
+	int count;
 
+	count = 0;
 	i = 0;
-	j = 0;
-	str2 = (char*)malloc(sizeof(char)* (ft_strlen(str) + 1));
-	while (str[i] != '\0')
+	j = -1;
+	while (str[i][0] != '\0')
 	{
-		if (str[i] != ' ')
+		if (str[i][0] == '+' || str[i][0] == '-' || str[i][0] == '*' || str[i][0] == '/' || str[i][0] == '%')
 		{
-			str2[j] = str[i];
+			first[j - 1] =ft_operations(str[i][0], first[j - 1], first[j]);
+			j--;
+		}
+		else 
+		{
 			j++;
+			first[j] = (float)ft_atoi(str[i]);
 		}
 		i++;
 	}
-	str2[j] = '\0';
-	return (str2);
+	return (first[j]);
 }

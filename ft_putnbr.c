@@ -6,11 +6,28 @@
 /*   By: bmasi <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/09 18:58:06 by bmasi             #+#    #+#             */
-/*   Updated: 2017/08/14 17:38:48 by bmasi            ###   ########.fr       */
+/*   Updated: 2017/08/20 03:02:47 by mgaspa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_putchar(char c);
+#include <unistd.h>
+
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
+
+void	ft_putstr(char *str)
+{
+	int		i;
+
+	i = 0;
+	while (str[i])
+	{
+		ft_putchar(str[i]);
+		i++;
+	}
+}
 
 void	ft_putnbr(int nb)
 {
