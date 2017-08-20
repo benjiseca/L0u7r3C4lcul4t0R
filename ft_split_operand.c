@@ -6,7 +6,7 @@
 /*   By: cdutartr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/20 01:10:22 by cdutartr          #+#    #+#             */
-/*   Updated: 2017/08/20 02:22:13 by cdutartr         ###   ########.fr       */
+/*   Updated: 2017/08/20 02:30:10 by cdutartr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ char	*ft_get_word(char *str, int length)
 			i++;
 			str++;
 		}
-		else 
+		else
 		{
 			ptr[i + 1] = '\0';
 			return (ptr);
@@ -111,24 +111,4 @@ char	**ft_split_operand(char *str)
 	}
 	tab[i] = 0;
 	return (tab);
-}
-
-int main(int argc, char **argv)
-{
-	int i;
-	char **str;
-	char *ptr;
-
-	i = 0;
-	ptr = argv[1] + 2;
-	printf("%d\n", ft_word_length(ptr));
-	//printf("%d\n", ft_count_benji(argv[1]));
-	//printf("%s\n", ft_get_word(argv[1], 3));
-	str = ft_split_operand(argv[1]);
-	while(str[i])
-	{
-		printf("%s\n", str[i]);
-		i++;
-	}
-	return 0;
 }
